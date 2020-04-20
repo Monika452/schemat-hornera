@@ -3,7 +3,75 @@
 </head>
 <body>Ile stopni ma wielomian?
 <input type="number" min="1" id="z">
+<button onclick="g()">nowy</button>
+<button onclick="f()">klik</button>
+<div id="tak"></div>
 <script>
+var z = document.getElementById("z").value
+var lista = [];
+var listab = [];
+var text = "";
+var y = z;
+var a = 0;
+var b = 0;
+var c = 0;
+var d = z;
+var dziel = 0;
+var kwadrat = document.createElement("INPUT");
+kwadrat.setAttribute("id", "kwadrat");
+kwadrat.setAttribute("type", "number");
+document.body.appendChild(kwadrat);
+var kwadr = document.getElementById("kwadrat").value;
+function g() {
+	z = document.getElementById("z").value
+	lista = [];
+	listab = [];
+	y = z;
+	a = 0;
+	b = 0;
+	c = 0;
+	d = z;
+	dziel = 0;
+	text = "obok x^" + y;
+	document.getElementById("tak").innerText = text;
+	}
+function f() {
+	if (y>0) {
+	y--;
+	text = "obok x^" + y;
+	kwadr = document.getElementById("kwadrat").value;
+	lista.push(kwadr);
+	document.getElementById("tak").innerText = text;
+	} else if ( y==0 ) { 
+		text = "dzielimy przez x +";
+		kwadr = document.getElementById("kwadrat").value;
+		lista.push(kwadr);
+		document.getElementById("tak").innerText = text;
+		y--;
+		} else {
+		text = "heh";
+		dziel = document.getElementById("kwadrat").value;
+		
+		b = lista[a];
+		listab.push(b);
+		do {
+		b = b * dziel + Number(lista[a+1]);
+		listab.push(b);
+		a++;
+		} while (a<z);
+		document.getElementById("tak").innerText = listab;
+		
+		text = "";
+		do {
+		d--;
+		text += "+" + listab[c] + "(x^" + d + ")      ";
+		c++;
+		} while (c<z);
+		
+		text += "reszta: " + listab[c];
+		document.getElementById("tak").innerText = text;
+		}
+}
 </script>
 </body>
 </html>
